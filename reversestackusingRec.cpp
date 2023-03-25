@@ -25,7 +25,7 @@ void insertatbottom(stack<int> &s, int num){
 
     s.push(elm);
 }
-
+    
 void reverseStack(stack<int> &stack){
     if(stack.empty()){
         return ;
