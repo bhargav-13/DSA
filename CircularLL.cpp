@@ -87,7 +87,7 @@ void deleteNode(node* &tail, int value) {
         curr -> next = NULL;
         delete curr;
 
-    }
+    }   
 }
 
 
@@ -107,4 +107,4 @@ int main(int argc, char const *argv[])
     display(tail);
 
     return 0;
-}
+} 
