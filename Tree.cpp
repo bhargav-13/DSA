@@ -1,4 +1,6 @@
 #include <iostream>
+#include<thread>
+
 
 using namespace std;
  
@@ -114,6 +116,7 @@ void createTree(){
 void preorder(Node* p){
     if (p){
         cout << p->data << ", " << flush;
+        this_thread::sleep_for(chrono::milliseconds(300));
         preorder(p->lchild);
         preorder(p->rchild);
     }
@@ -123,6 +126,7 @@ void inorder(Node* p){
     if (p){
         inorder(p->lchild);
         cout << p->data << ", " << flush;
+        this_thread::sleep_for(chrono::milliseconds(300));
         inorder(p->rchild);
     }
 }
@@ -132,6 +136,7 @@ void postorder(Node* p){
         postorder(p->lchild);
         postorder(p->rchild);
         cout << p->data << ", " << flush;
+        this_thread::sleep_for(chrono::milliseconds(300));
     }
 }
  
