@@ -82,6 +82,8 @@ void deletebyIndex(node* &head, int index){
         temp -> next = NULL;
         delete temp;        
 }
+
+
 int isSorted(node *p)
 {
 int x=-65536;
