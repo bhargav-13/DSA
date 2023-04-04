@@ -1,58 +1,77 @@
 #include<iostream>
-#include<queue>
 using namespace std;
 
-int main() {
-    cout << (-1)%1<< endl;
-    deque<int> d;
+class Queue{
+    public:
+        int* arr;
+        int size;
+        int front;
+        int rear;
 
-    d.push_front(12);
-    d.push_back(14);
+        Queue(int size){
+            this-> size = size;
+            arr = new int[size];
+            front = -1; 
+            rear = -1;
+        }
 
-    cout << d.front() << endl;
-    cout << d.back() << endl;
+        void insert(int data){
+            if(front == -1 && rear == -1){
+                front++;
+                rear++;
+                arr[front] = data;
+            }
+            else if(rear >= 0 && rear < size){
+                rear++;
+                arr[rear] = data;
+            }
+            else{
+                cout << "Queue Overflow" << endl;
+            }
+        }
 
-    d.pop_front();
-    
-    cout << d.front() << endl;
-    cout << d.back() << endl;
-    d.pop_back();
+        void Delete(){
+            if(front == -1){
+                cout << "Queue Underflow" << endl;
+            }
+            else if(front == rear ){
+                front=-1;
+                rear=-1;
+                cout << arr[front+1] << " element deleted" << endl;
+            }
+            else{
+                front++;
+                cout << arr[front-1] << " element deleted" << endl;
+            }
+        }
 
-    if(d.empty()) {
-        cout << "queue is empty" << endl;
-    }
-    else{
-        cout << "queue is not empty " << endl;
-    }
-
-    
-    //create a queue
-    queue<int> q;
-
-    q.push(11);
-    cout << "front of q is: " << q.front() << endl;
-    q.push(15);
-    cout << "front of q is: " << q.front() << endl;
-
-    q.push(13);
-    cout << "front of q is: " << q.front() << endl;
-
-    cout << "size of queue is : " << q.size() << endl;
-
-    q.pop();
-    q.pop();
-    q.pop();
-
-    cout << "size of queue is : " << q.size() << endl;
-
-    if(q.empty()) {
-        cout << "Queue is empty " << endl;
-    }
-    else{
-        cout << "queue is not empty " << endl;
-    }
-    
+        void Display(){
+            int i;
+            if(front == -1){
+                cout << "Queue is empty" << endl;
+            }
+            else{
+            for(i=front; i<=rear; i++){
+                cout << arr[i] << " ";
+            }
+            }
+            cout << endl;
+        }
+};
 
 
+int main(int argc, char const *argv[])
+{
+    Queue q(5);
+    q.insert(10);
+    q.insert(20);
+    q.insert(30);
+    q.insert(40);
+
+    q.Display();
+
+    q.Delete();
+
+    q.Display();
     return 0;
 }
