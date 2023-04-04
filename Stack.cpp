@@ -48,6 +48,10 @@ class Stack{
         }
     }
 
+    void change(int data, int pos){
+        arr[pos-1] = data;
+    }
+
 
 };
 
@@ -60,6 +64,8 @@ int main(int argc, char const *argv[])
     st.push(3);
     st.push(3);
     st.push(3);
+
+    st.change(20, 2);
 
     st.print();    
     return 0;
