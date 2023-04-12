@@ -34,7 +34,6 @@ Tree::Tree() {
 }
  
 Tree::~Tree() {
-    // TODO
 }
  
 void Tree::CreateTree() {

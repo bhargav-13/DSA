@@ -1,1 +1,3 @@
-this_thread::sleep_for(chrono::milliseconds(300));
+  Node* RRRotation(Node* p);
+    Node* LRRotation(Node* p);
+    Node* RLRotation(Node* p);

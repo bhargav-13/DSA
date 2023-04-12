@@ -44,6 +44,7 @@ class Stack{
     void print(){
         while(top != -1){
             cout << arr[top] << " "<< flush;
+            this_thread::sleep_for(chrono::milliseconds(300));
             top--;
         }
     }
@@ -62,10 +63,12 @@ int main(int argc, char const *argv[])
     st.push(1);
     st.push(2);
     st.push(3);
-    st.push(3);
-    st.push(3);
+    st.push(4);
+    st.push(5);
 
-    st.change(20, 2);
+    st.pop();
+
+    st.change(20, 1);
 
     st.print();    
     return 0;
