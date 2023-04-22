@@ -62,45 +62,128 @@ void levelorder(node* root){
 
 
 void inorder(node* root){
+    if(root == NULL){
+        return;
+    }
 
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
 }
+
+
+void reverseLevelOrder(node* root){
+    queue<node*> q;
+    stack<node*> s;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+        if(temp == NULL){
+            if(!q.empty()){
+                q.push(NULL);
+            }
+            s.push(temp);
+        }
+        else{
+            s.push(temp);
+            if(temp->right){
+                q.push(temp->right);
+            }
+            if(temp->left){
+                q.push(temp->left);
+            }
+        }
+    }
+
+    while(!s.empty()){
+        node* temp = s.top();
+        s.pop();
+        if(temp != NULL){
+            cout << temp->data << " ";
+        }
+        else{
+            cout << endl;
+        }
+    }
+}
+
+void BuildFromLevelorder(node* &root){
+    queue<node*> q;
+    cout << "enter data for root: ";
+    int data;
+    cin >> data;
+    root = new node(data); 
+    q.push(root);
+
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+
+        cout << "enter left node for " << temp->data << ":" ;
+        int ld;
+        cin >> ld;
+        if(ld!=-1){
+            temp->left = new node(ld);
+            q.push(temp->left);
+        }
+        cout << "enter right node for " << temp->data << ":" ;
+        int rd;
+        cin >> rd;
+        if(rd!=-1){
+            temp->right = new node(rd);
+            q.push(temp->right);
+        }  
+    }
+}
+
 
 int height(node* root){
     if(root == NULL){
         return 0;
     }
-    else{
-        int lheight = height(root->left);
-        int rheight = height(root->right);
+    int h1 = height(root->left);
+    int h2 = height(root->right);
 
-        if(lheight > rheight){
-            return lheight+1;
-        }
-        else{
-            return rheight+1;
-        }
-    }
+    int ans = max(h1, h2) + 1;
+    return ans;
 }
 
-void Reverselevelorder(node* root){
-    int h = height(root);
-
-    for(int i=h; i>=1; i--){
-        cout << "reverse order:" << endl;
-        levelorder(root);
+int diameter(node* root){
+    if(root == NULL){
+        return 0;
     }
+    int op1 = diameter(root->left);
+    int op2 = diameter(root->right);
+    int op3 = height(root->left)+ height(root->right)+1;
+
+    return max(op1, max(op2,op3)); 
 }
+
 
 int main(int argc, char const *argv[])
 {
     node* root = NULL;
 
-    root = buildtree(root);
+    //root = buildtree(root);
+    BuildFromLevelorder(root);
 
     cout << "height is = " << height(root) << endl;
 
-    // levelorder(root);
-    Reverselevelorder(root);
+    levelorder(root);
+    cout << endl;
+    // reverseLevelOrder(root);
+    cout << endl<< endl;
+//    inorder(root);
+    cout << endl;
+
+    cout << height(root) << endl;
+
 
     return 0;
 }
+
+
+//10 5 15 3 7 12 17 

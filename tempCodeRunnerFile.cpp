@@ -1,3 +1,1 @@
-  Node* RRRotation(Node* p);
-    Node* LRRotation(Node* p);
-    Node* RLRotation(Node* p);
+10 5 3 -1 -1 7 -1 -1 15 12 -1 -1 17 -1 -1
