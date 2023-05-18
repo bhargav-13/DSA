@@ -51,6 +51,17 @@ void inorder(node* root){
     inorder(root->right);
 }
 
+void preorder(node* root){
+    if(root == NULL){
+        return;
+    }
+
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+    
+}
+
 
 node* insert(node* &root, int d){
     
@@ -121,7 +132,7 @@ node* deleteNode(node* root, int x){
         root->right = deleteNode(root->right, x);
         return root;
     }
-
+    return root;
 }
 
 
@@ -141,6 +152,9 @@ int main(int argc, char const *argv[])
     levelorder(root);
     cout << "inorder" << endl;
     inorder(root);
+
+    cout << "Preorder" << endl;
+    preorder(root);
     return 0;
 }
 

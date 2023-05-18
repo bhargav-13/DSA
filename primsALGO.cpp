@@ -37,7 +37,7 @@ void PrimsMST(int G[V][V], int n){
     T[0][0] = u;
     T[1][0] = v;
     track[u] = track[v] = 0;
- 
+  
     // Initialize track array to track min cost edges
     for (int i {1}; i<V; i++){
         if (track[i] != 0){

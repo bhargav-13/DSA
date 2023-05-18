@@ -19,7 +19,7 @@ class Queue{
             if(front == -1 && rear == -1){
                 front++;
                 rear++;
-                arr[front] = data;
+                arr[rear] = data;
             }
             else if(rear >= 0 && rear < size){
                 rear++;
